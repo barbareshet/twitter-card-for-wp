@@ -1,0 +1,24 @@
+function twitterCard(){
+    //this returns the post dynamic description or a default value
+    $my_excerpt = apply_filters(remove_filter('the_excerpt', 'wpautop'), get_post_field('post_excerpt', $post_id));
+    if(!empty ($my_excerpt)) : //if the excerpt is not empty it'll return what ever we wrote in it
+    else : $my_excerpt = get_bloginfo('description');//else it'll return this default value
+    endif;
+    //this returns the post dynamic thumbnil or a default value
+    $my_thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail_size' );
+    //check if thumbnail is empty - if yes it'll return a default value
+    if(empty($my_thumbnail)) : $url = $my_thumbnail = 'some string';
+    // if we do have thumnale, this is the value that will out come
+    else : $url = $my_thumbnail['0'];
+    endif;
+    /*echo '<pre>';
+    print_r($url);die();*/
+    $twitter = array(
+    "twitterCard"           => "summary",//type of twitter card, can be changed by your choice
+    "twitterUsername"       => "@username",//twitter user name, can be changed by your choice
+    "twitterTitle"          =>  get_the_title(), //twitt title (take from page)
+    "twitterDescription"    => $my_excerpt, //twitt desc -> the excerpt   
+    "twitterImageSrc"       => $url//img src
+    );
+    return $twitter;
+}
