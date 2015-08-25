@@ -1,0 +1,7 @@
+<!-- twitter card-->
+<?php $tCard = twitterCard();?>
+    <meta name="twitter:card" content="<?php echo $tCard['twitterCard'] ;?>" />
+    <meta name="twitter:site" content="<?php echo $tCard['twitterUsername'] ;?>" />
+    <meta name="twitter:title" content="<?php echo $tCard['twitterTitle'] ;?>" />
+    <meta name="twitter:description" content="<?php echo $tCard['twitterDescription'];?>" />
+    <meta name="twitter:image" content="<?php echo $tCard['twitterImageSrc'] ;?>" />
